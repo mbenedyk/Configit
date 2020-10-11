@@ -3,6 +3,9 @@
 Please look at `Configit.DependenciesResolver.Tests` project. In test class `IntegrationTests.PackageManagerIntegrationTest` you can see how to setup all components
 
 # High level concept
+
+![Concept](img/concept.png)
+
 ```plantuml
 actor CLient
 Client -> PackageManager : Resolve(PackageIdentifier[])
