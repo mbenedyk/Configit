@@ -20,12 +20,14 @@ namespace Configit.DependenciesResolver.Tests.Integration
 
             var packageManager = BootstrapPackageManager(parseResult);
 
+            // this should be moved to inputParser
             var packageList = new List<PackageIdentifier>();
             foreach (var resultPackage in parseResult.Packages)
             {
                 var packageIdentifierParts = resultPackage.Split(',', StringSplitOptions.RemoveEmptyEntries);
                 packageList.Add(new PackageIdentifier(packageIdentifierParts[0], packageIdentifierParts[1]));
             }
+            // this should be moved to inputParser
 
             var request = new CanResolvePackagesRequest(packageList);
 
@@ -38,6 +40,7 @@ namespace Configit.DependenciesResolver.Tests.Integration
         {
             var packageDefinitionBuilder = new PackageDefinitionBuilder();
 
+            // this should be moved to inputParser
             for (var i = 0; i < parseResult.NumberOfDependencies; i++)
             {
                 var split = parseResult.Dependencies[i].Split(',', StringSplitOptions.RemoveEmptyEntries);
@@ -47,6 +50,7 @@ namespace Configit.DependenciesResolver.Tests.Integration
                     packageDefinitionBuilder.AddDependency(split[j], split[j + 1]);
                 }
             }
+            // this should be moved to inputParser
 
             var packageDefinitions = packageDefinitionBuilder.Build();
 
